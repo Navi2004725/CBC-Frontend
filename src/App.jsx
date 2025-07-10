@@ -1,18 +1,26 @@
 import "./App.css";
 import ProductCard from "./components/productCard";
 import SuperProduct from "./components/superproducts";
+import LoginPage from "./pages/loginPage";
+import HomePage from "./pages/homePage";
+import RegisterPage from "./pages/registerPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AdminPage from "./pages/adminPage";
 
 function App() {
   return (
-    <>
-      <div className="w-full h-screen bg-blue-300">
-        <div className="w-[600px] h-[600px] bg-black flex justify-around items-center flex-col">
-          <div className="w-[150px] h-[150px] bg-[red]"></div>
-          <div className="w-[150px] h-[150px] bg-green-300"></div>
-          <div className="w-[150px] h-[150px] bg-yellow-200"></div>
+    <BrowserRouter>
+      <div className="w-full h-screen">
+        <div className="w-[calc(100vw-35px)] h-[calc(100vh-15px)] bg-red-600">
+          <Routes path="/">
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/admin/*" element={<AdminPage />} />
+          </Routes>
         </div>
       </div>
-    </>
+    </BrowserRouter>
   );
 }
 
