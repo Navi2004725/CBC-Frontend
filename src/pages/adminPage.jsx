@@ -1,16 +1,35 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
+import { FaBoxArchive } from "react-icons/fa6";
+import { GiShoppingBag } from "react-icons/gi";
+import { FaUser } from "react-icons/fa";
+import { IoSettings } from "react-icons/io5";
 
 export default function AdminPage() {
   return (
     <div className="w-full h-screen bg-red-600 flex">
-      <div className="w-[300px] h-full bg-white"></div>
-
+      <div className="w-[300px] h-full bg-white flex flex-col items-center justify-start">
+        <span className="text-3xl font-bold my-5">Admin Pannel</span>
+        <Link to="/admin/products" className="flex flex-row items-center w-full h-[60px] border gap-[25px] p-[20px]">
+          <FaBoxArchive></FaBoxArchive>Products
+        </Link>
+        <Link to="admin/orders" className="flex flex-row items-center w-full h-[60px] border gap-[25px] p-[20px]">
+          <GiShoppingBag></GiShoppingBag>Orders
+        </Link>
+        <Link to="/admin/users" className="flex flex-row items-center w-full h-[60px] border gap-[25px] p-[20px]">
+          <FaUser></FaUser>
+          Users
+        </Link>
+        <Link to="/admin/settings" className="flex flex-row items-center w-full h-[60px] border gap-[25px] p-[20px]">
+          <IoSettings></IoSettings>
+          Settings
+        </Link>
+      </div>
       {/* Blue area */}
-      <div className="w-[calc(100%-300px)] h-full bg-blue-600">
+      <div className="w-[calc(00%-300px)] h-full">
         <Routes>
-          <Route path="/" element={<h1>Dashboard</h1>} />
-          <Route path="/products" element={<h1>Products</h1>} />
-          <Route path="/orders" element={<h1>Orders</h1>} />
+          <Route path="/" element={<h>Dashboard</h>} />
+          <Route path="/products" element={<h>Products</h>} />
+          <Route path="/orders" element={<h>Orders</h>} />
         </Routes>
       </div>
     </div>
