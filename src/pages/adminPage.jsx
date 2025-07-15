@@ -3,6 +3,8 @@ import { FaBoxArchive } from "react-icons/fa6";
 import { GiShoppingBag } from "react-icons/gi";
 import { FaUser } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
+import ProductsAdminPage from "./admin/productsAdminPage";
+import AddProductAdminPage from "./admin/addProductAdminPage";
 
 export default function AdminPage() {
   return (
@@ -28,7 +30,8 @@ export default function AdminPage() {
       <div className="w-[calc(00%-300px)] h-full">
         <Routes>
           <Route path="/" element={<h>Dashboard</h>} />
-          <Route path="/products" element={<h>Products</h>} />
+          <Route path="/products" element={<ProductsAdminPage />} />
+          <Route path="/newProduct" element={<AddProductAdminPage />} />
           <Route path="/orders" element={<h>Orders</h>} />
         </Routes>
       </div>
