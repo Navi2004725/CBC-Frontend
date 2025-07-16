@@ -1,41 +1,34 @@
 import { useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+import toast from "react-hot-toast";
+import mediaUpload from "../utils/mediaUpload";
 
 export default function TestPage() {
-  const [count, setCount] = useState(0);
+  const [file, setFile] = useState(null);
 
-  function increment() {
-    setCount(count + 1);
+  function handleFileUpload() {
+    mediaUpload(file)
+      .then((Url) => {
+        console.log("File uploaded successfully:", Url);
+        toast.success("File uploaded successfully!");
+      })
+      .catch((error) => {
+        console.error("File upload failed:", error);
+        toast.error("File upload failed. Please try again.");
+      });
   }
-
-  function decrement() {
-    setCount(count - 1);
-    if (count <= 0) {
-      setCount(0);
-    }
-  }
-  // Uncommenting the line below will cause an infinite loop
-  // because it will keep updating the state without any condition.
-  // setCount(count + 1); // This will cause an infinite loop
-  // DO NOT DO THIS
   return (
-    <div className="w-full h-screen bg-amber-300 flex items-center justify-center">
-      <div className="w-[400px] h-[400px] bg-white flex-col justify-center items-center">
-        <h1 className="text-5xl font-bold">{count}</h1>
-        <div className="w-full flex justify-center items-center h-[100px]">
-          <button
-            onClick={decrement}
-            className="w-[100px] h-[45px] bg-blue-500 text-white text-3xl mx-2 font-bold justify-center items-center"
-          >
-            -
-          </button>
-          <button
-            onClick={increment}
-            className="w-[100px] h-[45px] bg-blue-500 text-white text-3xl mx-2 font-bold justify-center items-center"
-          >
-            +
-          </button>
-        </div>
-      </div>
+    <div className="w-full h-full flex items-center justify-center bg-gray-100">
+      <input
+        type="file"
+        onChange={(e) => {
+          console.log(e);
+          setFile(e.target.files[0]);
+        }}
+      />
+      <button onClick={handleFileUpload} className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4 cursor-pointer">
+        Upload
+      </button>
     </div>
   );
 }

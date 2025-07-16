@@ -3,21 +3,30 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import mediaUpload from "../../utils/mediaUpload.jsx";
 export default function addProductsAdminPage() {
   const [productId, setProductId] = useState("");
   const [name, setName] = useState("");
   const [altNames, setAltNames] = useState("");
   const [labelledPrice, setLabelledPrice] = useState("");
   const [price, setPrice] = useState("");
-  const [images, setImages] = useState("");
+  const [images, setImages] = useState([]);
   const [description, setDescription] = useState("");
   const [stock, setStock] = useState("");
   const [isAvailable, setIsAvailable] = useState(true);
   const [category, setCategory] = useState("cream");
   const navigation = useNavigate();
 
-  function handleSubmit() {
+  async function handleSubmit() {
+    const promiseArray = [];
+    for (let i = 0; i < images.length; i++) {
+      const promise = mediaUpload(images[i]);
+      promiseArray[i] = promise;
+    }
+
+    const responces = await Promise.all(promiseArray);
+    console.log(responces);
+
     const altNamesInArray = altNames.split(",");
     const productData = {
       productId: productId,
@@ -25,7 +34,7 @@ export default function addProductsAdminPage() {
       altNames: altNamesInArray,
       labelledPrice: labelledPrice,
       price: price,
-      images: [],
+      images: responces,
       description: description,
       stock: stock,
       isAvailable: isAvailable,
@@ -82,7 +91,7 @@ export default function addProductsAdminPage() {
         </div>
         <div className="w-[500px]  flex flex-col gap-[5px]">
           <label className="text-sm font-semibold">Images</label>
-          <input type="text" value={images} onChange={(e) => setImages(e.target.value)} className="w-full border-[1px] h-[40px] rounded-md" />
+          <input multiple type="file" onChange={(e) => setImages(e.target.files)} className="w-full border-[1px] h-[40px] rounded-md" />
         </div>
         <div className="w-[500px]  flex flex-col gap-[5px]">
           <label className="text-sm font-semibold">Description</label>
