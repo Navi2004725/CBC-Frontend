@@ -8,7 +8,7 @@ import AddProductAdminPage from "./admin/addProductAdminPage";
 
 export default function AdminPage() {
   return (
-    <div className="w-full h-screen bg-red-600 flex">
+    <div className="w-full h-screen bg-white flex">
       <div className="w-[300px] h-full bg-white flex flex-col items-center justify-start">
         <span className="text-3xl font-bold my-5">Admin Pannel</span>
         <Link to="/admin/products" className="flex flex-row items-center w-full h-[60px] border gap-[25px] p-[20px]">

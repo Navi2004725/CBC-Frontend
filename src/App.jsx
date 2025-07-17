@@ -13,7 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="w-full h-screen">
-        <div className="w-[calc(100vw-35px)] h-[calc(100vh-15px)] bg-red-600">
+        <div className="w-[calc(100vw-35px)] h-[calc(100vh-15px)] bg-white">
           <Toaster position="top-center" />
           <Routes path="/">
             <Route path="/" element={<HomePage />} />
