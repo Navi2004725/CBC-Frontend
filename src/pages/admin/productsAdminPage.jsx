@@ -81,7 +81,7 @@ export default function ProductsAdminPage() {
                             console.log("Product deleted successfully");
                             toast.success("Product deleted successfully!");
                             console.log(res.data);
-                            setisLoading(isLoading); // Trigger re-render by updating state
+                            setisLoading(true); // Trigger re-render by updating state
                           })
                           .catch((error) => {
                             console.error("Error deleting product:", error);

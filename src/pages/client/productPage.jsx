@@ -18,7 +18,7 @@ export default function ProductPage() {
   }, [loading]);
 
   return (
-    <div className="w-full bg-red-900 flex flex-wrap gap-[40px] justify-center items-center">
+    <div className="w-full flex flex-wrap gap-[40px] justify-center items-center">
       {loading ? (
         <Loader />
       ) : (

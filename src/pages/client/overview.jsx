@@ -28,17 +28,39 @@ export default function productOverview() {
   }, [status]);
 
   return (
-    <div className="w-full h-screen bg-gray-100 flex justify-center items-center">
+    <div className="w-full h-full">
       {status === "loading" && <Loader />}
       {status === "success" && product && (
         <div className="w-full h-full flex flex-row">
-          <div className="w-[49px] h-full bg-blue-800">
+          <div className="w-[49%] h-full flex justify-center items-center">
             <ImageSlider images={product.images || []} />
           </div>
-          <div className="w-[49px] bg-red-900 flex flex-col justify-center items-center">
-            <h2 className="text-white text-lg font-bold mb-2">{product.name}</h2>
-            <p className="text-white">{product.description}</p>
-            {/* Add more product details as needed */}
+          <div className="w-[49%] h-full flex flex-col items-center pt-[50px]">
+            <h2 className="text-2xl font-bold">
+              {product.name}
+              <span className="font-light">{product.altNames.join(" | ")}</span>
+            </h2>
+            <p className="text-lg mt-[20px]">{product.description}</p>
+            <div className="w-full flex flex-col items-center mt-[20px]">
+              {product.labelledPrice > product.price ? (
+                <div>
+                  <span className="text-lg font-semibold line-through mr-[20px]">{product.labelledPrice.toLocaleString("en-US", { minimumFractionDigits: 2 })}</span>
+                  <span className="text-xl">{product.price.toLocaleString("en-US", { minimumFractionDigits: 2 })}</span>
+                </div>
+              ) : (
+                <div>
+                  <span className="text-lg font-bold">{product.price.toLocaleString("en-US", { minimumFractionDigits: 2 })}</span>
+                </div>
+              )}
+            </div>
+            <div className="w-full flex flex-row justify-center items-center mt-[20px] gap-[10px]">
+              <button className="w-[200px] h-[50px] cursor-pointer rounded-xl shadow-2xl text-white bg-blue-900 border-[3px] border-blue-900 hover:bg-white hover:text-blue-900 hover:w-[250px]">
+                Buy Now
+              </button>
+              <button className="w-[200px] h-[50px] cursor-pointer rounded-xl shadow-2xl text-white bg-blue-600 border-[3px] border-blue-600  hover:bg-white hover:text-blue-600 hover:w-[250px]">
+                Add to Cart
+              </button>
+            </div>
           </div>
         </div>
       )}
