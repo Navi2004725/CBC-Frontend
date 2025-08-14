@@ -6,6 +6,7 @@ import { IoSettings } from "react-icons/io5";
 import ProductsAdminPage from "./admin/productsAdminPage";
 import AddProductAdminPage from "./admin/addProductAdminPage";
 import UpdateProductPage from "./admin/addProduct";
+import OrdersAdminPage from "./admin/orders";
 
 export default function AdminPage() {
   return (
@@ -15,7 +16,7 @@ export default function AdminPage() {
         <Link to="/admin/products" className="flex flex-row items-center w-full h-[60px] border gap-[25px] p-[20px]">
           <FaBoxArchive></FaBoxArchive>Products
         </Link>
-        <Link to="admin/orders" className="flex flex-row items-center w-full h-[60px] border gap-[25px] p-[20px]">
+        <Link to="/admin/orders" className="flex flex-row items-center w-full h-[60px] border gap-[25px] p-[20px]">
           <GiShoppingBag></GiShoppingBag>Orders
         </Link>
         <Link to="/admin/users" className="flex flex-row items-center w-full h-[60px] border gap-[25px] p-[20px]">
@@ -34,7 +35,7 @@ export default function AdminPage() {
           <Route path="/products" element={<ProductsAdminPage />} />
           <Route path="/newProduct" element={<AddProductAdminPage />} />
           <Route path="/updateProduct" element={<UpdateProductPage />} />
-          <Route path="/orders" element={<h>Orders</h>} />
+          <Route path="/orders" element={<OrdersAdminPage />} />
         </Routes>
       </div>
     </div>
