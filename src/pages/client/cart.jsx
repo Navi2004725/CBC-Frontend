@@ -11,7 +11,7 @@ export default function CartPage() {
       {cart.map((item) => {
         return (
           <div key={item.productId} className="w-[800px] h-[100px] m-[10px] shadow-2xl flex flex-row items-center relative">
-            <img src={item.image} className="w-[100px] h-[100px] object-cover" />
+            <img src={item.images} className="w-[100px] h-[100px] object-cover" />
             <div className="w-[320px] h-full bg-red-500 flex flex-col justify-center pl-[10px]">
               <span className=" font-bold">{item.name}</span>
               <span className="font-bold">{item.price.toLocaleString("en-US", { minimumFractionDigits: 2 })}</span>

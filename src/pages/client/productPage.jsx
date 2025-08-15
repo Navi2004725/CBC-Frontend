@@ -18,11 +18,11 @@ export default function ProductPage() {
   }, [loading]);
 
   return (
-    <div className="w-full flex flex-wrap gap-[40px] justify-center items-center">
+    <div className="w-full h-full">
       {loading ? (
         <Loader />
       ) : (
-        <div className="w-full">
+        <div className="w-full flex flex-wrap gap-[40px] justify-center items-center">
           {products.map((product) => (
             <ProductCard key={product.productId} product={product} />
           ))}
