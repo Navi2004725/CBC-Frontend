@@ -2,11 +2,34 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useGoogleLogin } from "@react-oauth/google";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const pageLoader = useNavigate();
+  const googleLogin = useGoogleLogin({
+    onSuccess: (res) => {
+      console.log("Google login success:", res);
+      axios
+        .post(import.meta.env.VITE_BACKEND_URL + "/users/google-login", {
+          token: res.access_token,
+        })
+        .then((response) => {
+          localStorage.setItem("token", response.data.token);
+          toast.success("Login successful!");
+          if (response.data.role === "admin") {
+            pageLoader("/admin");
+          } else if (response.data.role === "user") {
+            pageLoader("/"); // Redirect to user dashboard or home page
+          }
+        })
+        .catch((error) => {
+          console.error("Backend Google login failed:", error);
+          toast.error("Google login failed. Please try again.");
+        });
+    },
+  });
 
   function handleLogin() {
     console.log("Email:", email);
@@ -67,6 +90,9 @@ export default function LoginPage() {
         <button onClick={handleLogin} className="w-[350px] h-[50px] bg-blue-600 text-black rounded-xl mt-5 font-bold top-[20px]">
           Login
         </button>
+        <button onClick={() => googleLogin()} className="w-[350px] h-[50px] bg-red-600 text-black rounded-xl mt-5 font-bold top-[20px]">
+          Sign in with Google
+        </button>
         <span className="text-lg font-bold mt-5">
           Don't have an account?{" "}
           <Link to="/register" className="text-blue-500">
@@ -74,6 +100,13 @@ export default function LoginPage() {
           </Link>
           from here
         </span>
+        <p>
+          Forget password{" "}
+          <Link to="/forget" className="text-blue-500">
+            Reset Password
+          </Link>{" "}
+          from here
+        </p>
       </div>
     </div>
   );

@@ -9,22 +9,29 @@ import AdminPage from "./pages/adminPage";
 import TestPage from "./pages/testPage";
 import { Toaster } from "react-hot-toast";
 import ClientPage from "./pages/client/clientPage";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import ForgetPasswordPage from "./pages/client/forget";
+const clientId = "377373171669-rl4l17mpumagb64q6lvvsjavik83nftp.apps.googleusercontent.com";
+const Clientsecret = "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";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="w-full h-screen">
-        <div className="w-[calc(100vw-35px)] h-[calc(100vh-15px)] bg-primary text-secondary">
-          <Toaster position="top-center" />
-          <Routes path="/">
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/test" element={<TestPage />}></Route>
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/admin/*" element={<AdminPage />} />
-            <Route path="/*" element={<ClientPage />} />
-          </Routes>
+      <GoogleOAuthProvider clientId={clientId}>
+        <div className="w-full h-screen">
+          <div className="w-[calc(100vw-35px)] h-[calc(100vh-15px)] bg-primary text-secondary">
+            <Toaster position="top-center" />
+            <Routes path="/">
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/test" element={<TestPage />}></Route>
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/admin/*" element={<AdminPage />} />
+              <Route path="/*" element={<ClientPage />} />
+              <Route path="/forget" element={<ForgetPasswordPage />} />
+            </Routes>
+          </div>
         </div>
-      </div>
+      </GoogleOAuthProvider>
     </BrowserRouter>
   );
 }
