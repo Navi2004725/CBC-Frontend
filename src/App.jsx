@@ -12,7 +12,7 @@ import ClientPage from "./pages/client/clientPage";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import ForgetPasswordPage from "./pages/client/forget";
 const clientId = "377373171669-rl4l17mpumagb64q6lvvsjavik83nftp.apps.googleusercontent.com";
-const Clientsecret = "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";
+//const Clientsecret = "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";
 
 function App() {
   return (
