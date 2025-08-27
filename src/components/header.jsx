@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { HiHome } from "react-icons/hi";
+import { FaBoxArchive } from "react-icons/fa6";
+import { MdReviews } from "react-icons/md";
+import { FcContacts } from "react-icons/fc";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -14,7 +17,7 @@ export default function Header() {
       {isOpen && (
         <div className="fixed z-[100] w-[100vw] top-0 right-0 h-[100vh] bg-[#00000050]">
           <div className="h-full w-[350px] bg-white flex flex-col">
-            <div className="w-full bg-accent h-[100px] flex pl-[45px] flex-row items-center gap-[20px]">
+            <div className="w-full bg-accent h-[80px] flex pl-[45px] flex-row items-center gap-[20px]">
               <GiHamburgerMenu
                 className="text-white text-4xl  md:hidden cursor-pointer"
                 onClick={() => {
@@ -28,7 +31,7 @@ export default function Header() {
                   navigate("/");
                 }}
               />
-              <div className="w-full h-full items-start flex flex-col p-[45px]">
+              <div className="w-full h-full mt-30 items-start flex flex-col p-[45px]">
                 <button
                   className="text-accent text-2xl flex flex-row items-center"
                   onClick={() => {
@@ -41,9 +44,25 @@ export default function Header() {
                   className="text-accent text-2xl flex flex-row items-center"
                   onClick={() => {
                     setIsOpen(false);
-                    navigate("/");
+                    navigate("/products");
                   }}>
-                  <HiHome className="text-2xl mr-2 text-accent"></HiHome> Products
+                  <FaBoxArchive className="text-2xl mr-2 text-accent"></FaBoxArchive> Products
+                </button>
+                <button
+                  className="text-accent text-2xl flex flex-row items-center"
+                  onClick={() => {
+                    setIsOpen(false);
+                    navigate("/reviews");
+                  }}>
+                  <MdReviews className="text-2xl mr-2 text-accent"></MdReviews> reviews
+                </button>
+                <button
+                  className="text-accent text-2xl flex flex-row items-center"
+                  onClick={() => {
+                    setIsOpen(false);
+                    navigate("/contact");
+                  }}>
+                  <FcContacts className="text-2xl mr-2 text-accent"></FcContacts> contact
                 </button>
               </div>
             </div>
@@ -52,7 +71,7 @@ export default function Header() {
       )}
       <img
         src="/logo.jpg"
-        className="w-[150px] h-[80px] object-cover absolute md:left-[40px] cursor-pointer"
+        className="w-[80px] h-[80px] object-cover absolute md:left-[40px] cursor-pointer"
         onClick={() => {
           navigate("/");
         }}
