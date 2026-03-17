@@ -1,12 +1,70 @@
-# React + Vite
+# CBC Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Industry:** E-commerce / Retail (Online Storefront + Admin Management)
 
-Currently, two official plugins are available:
+This is the frontend for a commerce platform with customer-facing shopping flows and an admin dashboard for product and order management. It is built with React and Vite, styled with Tailwind CSS, and integrates with a backend API via Axios. Authentication flows include standard login/registration and Google OAuth.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
+- Customer storefront pages: product listing, product overview, cart, and checkout
+- Admin dashboard: product listing, add/update product, and order management
+- Authentication: login, register, and forget password flows
+- Google OAuth provider integration
+- Responsive layout structure with reusable components
 
-## Expanding the ESLint configuration
+## Tech Stack
+- React 19 + Vite 6
+- React Router 7
+- Tailwind CSS 4
+- Axios
+- React Hot Toast
+- Google OAuth (frontend provider)
+- Supabase JS (installed for backend integration when needed)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+```
+src/
+  components/        Reusable UI components
+  pages/
+    admin/           Admin routes (products, orders, add/update)
+    client/          Client routes (products, cart, checkout)
+  utils/             Helper utilities (cart, media upload)
+  App.jsx            Routing and providers
+```
+
+## Environment Variables
+Create a `.env` file in the project root and set:
+```
+VITE_BACKEND_URL=https://your-backend-domain
+```
+
+## Routes Overview
+- `/*` Client routes (home, products, cart, checkout, overview)
+- `/login` Login page
+- `/register` Registration page
+- `/forget` Forgot password page
+- `/admin/*` Admin dashboard routes
+
+## Getting Started
+1. Install dependencies:
+```
+npm install
+```
+
+2. Run the development server:
+```
+npm run dev
+```
+
+3. Build for production:
+```
+npm run build
+```
+
+4. Preview the production build:
+```
+npm run preview
+```
+
+## Notes
+- The Google OAuth client configuration is currently defined in `src/App.jsx`. For production, move secrets to environment variables and use a secure backend flow.
+- The admin dashboard validates user role from the backend API before allowing access.
