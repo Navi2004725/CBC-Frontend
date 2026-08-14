@@ -1,26 +1,39 @@
 import { Routes, Route } from "react-router-dom";
 import Header from "../../components/header";
+import Footer from "../../components/footer";
+import HomePage from "./homePage";
 import ProductPage from "./productPage";
 import ProductOverview from "./overview";
 import CartPage from "./cart";
 import CheckoutPage from "./checkoutPage";
+import ReviewsPage from "./reviewsPage";
+import ContactPage from "./contactPage";
 
 export default function ClientPage() {
   return (
-    <div className="w-full h-screen max-h-screen">
+    <div className="w-full min-h-screen flex flex-col">
       <Header />
-      <div className="w-full h-[calc(100%-100px)]">
+      <main className="flex-1 w-full">
         <Routes>
-          <Route path="/" element={<h1 className="text-2xl text-center mt-10">Welcome to the Client Page</h1>} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductPage />} />
-          <Route path="/reviews" element={<h1 className="text-2xl text-center mt-10">Reviews Page</h1>} />
-          <Route path="/contact" element={<h1 className="text-2xl text-center mt-10">Contact Us Page</h1>} />
+          <Route path="/reviews" element={<ReviewsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/overview/:productId" element={<ProductOverview />} />
-          <Route path="/*" element={<h1 className="text-2xl text-center mt-10">Page not found</h1>} />
+          <Route
+            path="/*"
+            element={
+              <div className="container-main section-padding text-center">
+                <h1 className="font-display text-4xl text-accent mb-4">Page Not Found</h1>
+                <p className="text-muted">The page you're looking for doesn't exist.</p>
+              </div>
+            }
+          />
         </Routes>
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 }

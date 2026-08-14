@@ -18,9 +18,19 @@ function App() {
   return (
     <BrowserRouter>
       <GoogleOAuthProvider clientId={clientId}>
-        <div className="w-full h-screen">
-          <div className="w-[calc(100vw-35px)] h-[calc(100vh-15px)] bg-primary text-secondary">
-            <Toaster position="top-center" />
+        <div className="w-full min-h-screen">
+          <div className="w-full min-h-screen bg-primary text-secondary">
+            <Toaster
+              position="top-center"
+              toastOptions={{
+                style: {
+                  background: "#2d1b3d",
+                  color: "#faf7f2",
+                  borderRadius: "12px",
+                  fontFamily: "Outfit, sans-serif",
+                },
+              }}
+            />
             <Routes path="/">
               <Route path="/login" element={<LoginPage />} />
               <Route path="/test" element={<TestPage />}></Route>
