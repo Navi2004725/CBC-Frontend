@@ -34,10 +34,7 @@ export default function RegisterPage() {
       navigate("/login");
     } catch (error) {
       console.error("Registration failed:", error);
-      toast.error(
-        error?.response?.data?.message ||
-          "Registration failed. Please try again."
-      );
+      toast.error(error?.response?.data?.message || "Registration failed. Please try again.");
     }
   }
 
@@ -54,57 +51,27 @@ export default function RegisterPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-secondary mb-2">First name</label>
-              <input
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                type="text"
-                className="input-field"
-                placeholder="Jane"
-              />
+              <input value={firstName} onChange={(e) => setFirstName(e.target.value)} type="text" className="input-field" placeholder="Jane" />
             </div>
             <div>
               <label className="block text-sm font-medium text-secondary mb-2">Last name</label>
-              <input
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                type="text"
-                className="input-field"
-                placeholder="Doe"
-              />
+              <input value={lastName} onChange={(e) => setLastName(e.target.value)} type="text" className="input-field" placeholder="Doe" />
             </div>
           </div>
 
           <div>
             <label className="block text-sm font-medium text-secondary mb-2">Email</label>
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              className="input-field"
-              placeholder="you@example.com"
-            />
+            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="input-field" placeholder="you@example.com" />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-secondary mb-2">Password</label>
-            <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              className="input-field"
-              placeholder="••••••••"
-            />
+            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="input-field" placeholder="••••••••" />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-secondary mb-2">Confirm password</label>
-            <input
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              type="password"
-              className="input-field"
-              placeholder="••••••••"
-            />
+            <input value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} type="password" className="input-field" placeholder="••••••••" />
           </div>
 
           <button onClick={handleRegister} className="btn-primary w-full">
