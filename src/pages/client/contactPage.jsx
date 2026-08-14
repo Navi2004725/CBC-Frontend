@@ -20,7 +20,7 @@ export default function ContactPage() {
               {[
                 { icon: HiLocationMarker, title: "Visit Us", text: "123 Beauty Lane, Colombo, Sri Lanka" },
                 { icon: HiPhone, title: "Call Us", text: "+94 11 234 5678" },
-                { icon: HiMail, title: "Email Us", text: "hello@lumierebeauty.com" },
+                { icon: HiMail, title: "Email Us", text: "hello@aurorabeauty.com" },
                 { icon: HiClock, title: "Working Hours", text: "Mon – Sat: 9:00 AM – 6:00 PM" },
               ].map((item) => (
                 <div key={item.title} className="flex items-start gap-4">
@@ -50,10 +50,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-secondary mb-2">Message</label>
-                <textarea
-                  className="input-field min-h-[120px] resize-none"
-                  placeholder="How can we help you?"
-                />
+                <textarea className="input-field min-h-[120px] resize-none" placeholder="How can we help you?" />
               </div>
               <button type="submit" className="btn-primary w-full">
                 Send Message
